@@ -14,7 +14,9 @@ export const AppDataSource = new DataSource({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD, // BÜTÜN HARDCODED ŞİFRELERİ KALDIRDIK! Doğrudan .env ne derse o.
     database: process.env.DB_NAME,
-    ssl: true,
+    ssl: {
+        rejectUnauthorized: false // BULUT İÇİN GÜVENLİK KİLİDİNİ ESNETİYORUZ
+    },
     synchronize: true, // Geliştirme ortamında tabloları otomatik oluşturur
     logging: false,
     entities: [GenerationJob, Attempt],
